@@ -1,4 +1,5 @@
 KEYROW1 	equ $600017
+DISPLAY 	equ $60000D
 
 	include "BasicMacros.asm"
 
@@ -18,6 +19,7 @@ UserRam 	equ $18000
         DC.L    ProgramStart	; Set PC to start
 
 ProgramStart:	
+	move.b	#$08,DISPLAY.L	; Set 256x256 8-color mode
 	lea userram,a3
 	move.l #$800,d1
 	jsr cldir0		;Clear Game Ram
